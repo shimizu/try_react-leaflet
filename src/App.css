@@ -45,3 +45,12 @@ h1, h2, p {
   height: 900px;;
   
 }
+
+.MapsArea {
+  width: 70%;
+  float: left;
+}
+.UIArea {
+  width: 29%;
+  float:right;
+}

@@ -3,21 +3,17 @@ import { render } from 'react-dom'
 import { Map, Marker, Popup, TileLayer , LayersControl} from 'react-leaflet'
 
 
-const position = [51.505, -0.09]
-
 class SimpleMaps extends Component {
-    
     handleMoveend(props){
         console.log("mapMove", props);
     }
     
     render(){
-        
         return (
             <Map
                 className="simpleMaps"
-                center={position}
-                zoom={13}
+                center={this.props.center}
+                zoom={this.props.zoom}
                 onMoveend={this.handleMoveend}
             >
                 <TileLayer
@@ -41,7 +37,7 @@ class SimpleMaps extends Component {
                     </LayersControl.BaseLayer>
                 </LayersControl>
               
-                <Marker position={position}>
+                <Marker position={this.props.center}>
                   <Popup>
                     <span>A pretty CSS3 popup.<br />Easily customizable.</span>
                   </Popup>
