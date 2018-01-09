@@ -4,8 +4,9 @@ import { Map, Marker, Popup, TileLayer , LayersControl} from 'react-leaflet'
 
 
 class SimpleMaps extends Component {
-    handleMoveend(props){
-        console.log("mapMove", props);
+    handleMoveend(mapObj){
+        this.props.changeMapState(mapObj);
+                
     }
     
     render(){
@@ -14,7 +15,7 @@ class SimpleMaps extends Component {
                 className="simpleMaps"
                 center={this.props.center}
                 zoom={this.props.zoom}
-                onMoveend={this.handleMoveend}
+                onMoveend={this.handleMoveend.bind(this)}
             >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -29,10 +30,10 @@ class SimpleMaps extends Component {
                     />
                   </LayersControl.BaseLayer>
                   
-                  <LayersControl.BaseLayer name="OpenStreetMap.Mapnik">
+                  <LayersControl.BaseLayer name="地理院タイル">
                     <TileLayer
                       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      url="http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png"
                     />
                     </LayersControl.BaseLayer>
                 </LayersControl>

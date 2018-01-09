@@ -10,7 +10,7 @@ import SimpleMaps from './component/SimpleMaps'
 class App extends Component {
   state = {
     simpleMaps:{
-      center:[51.505, -0.09],
+      center:[35.685175, 139.75279950000004],
       zoom:13
     }
   }
@@ -19,6 +19,15 @@ class App extends Component {
     let  state = this.state
     state.simpleMaps.zoom = 18
     this.setState(state)
+  }
+  
+  handleChangeMapState(mapObj){
+    console.log("change", mapObj)
+
+    let  state = this.state
+    state.simpleMaps.zoom = mapObj.target._zoom
+    this.setState(state)
+    
   }
   
   render() {
@@ -32,6 +41,7 @@ class App extends Component {
         <SimpleMaps
           center={this.state.simpleMaps.center}
           zoom={this.state.simpleMaps.zoom}
+          changeMapState={this.handleChangeMapState.bind(this)}
         />
         </div>
         <div className="UIArea">
